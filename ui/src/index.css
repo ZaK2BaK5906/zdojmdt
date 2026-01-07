@@ -1,8 +1,13 @@
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --color-gov-blue: #1e3a8a;
+  --color-gov-blue-dark: #1e293b;
+  --color-gov-gold: #d97706;
+}
 
 * {
   margin: 0;
@@ -11,7 +16,7 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #0f172a;
