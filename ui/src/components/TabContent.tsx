@@ -4,6 +4,7 @@ import { iconMap } from '../data/sections';
 import { IoStatsChart, IoTime, IoCheckmarkCircle, IoAlert, IoSearch, IoOptions } from 'react-icons/io5';
 import LawsPage from './pages/LawsPage';
 import WarrantsPage from './pages/WarrantsPage';
+import PermissionsPage from './pages/PermissionsPage';
 
 interface TabContentProps {
   section: Section;
@@ -19,6 +20,11 @@ const TabContent: React.FC<TabContentProps> = ({ section, subsection }) => {
   // Render WarrantsPage for all legal instruments subsections
   if (section.id === 'legal-instruments') {
     return <WarrantsPage />;
+  }
+
+  // Render PermissionsPage for governor's appointments & cabinet
+  if (section.id === 'governor' && (subsection.id === 'appointments' || subsection.id === 'cabinet')) {
+    return <PermissionsPage />;
   }
 
   // Default content for other subsections
