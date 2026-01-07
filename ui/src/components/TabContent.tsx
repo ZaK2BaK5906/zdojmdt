@@ -8,20 +8,18 @@ interface TabContentProps {
 
 const TabContent: React.FC<TabContentProps> = ({ section, subsection }) => {
   return (
-    <div className="flex-1 overflow-y-auto bg-slate-800">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-800 border-b border-slate-700 px-8 py-6">
-        <div className="flex items-center space-x-3 mb-2">
-          <span className="text-3xl">{section.icon}</span>
-          <h2 className="text-3xl font-bold text-white">{section.title}</h2>
+    <div className="content">
+      <div className="content-header">
+        <div className="content-header-top">
+          <span className="content-header-icon">{section.icon}</span>
+          <h2>{section.title}</h2>
         </div>
-        <p className="text-slate-400 text-lg ml-12">{subsection.title}</p>
+        <p>{subsection.title}</p>
       </div>
 
-      {/* Content Area */}
-      <div className="p-8">
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="content-body">
+        {/* Stats Grid */}
+        <div className="stats-grid">
           <StatCard
             title="Dossiers actifs"
             value="248"
@@ -52,114 +50,68 @@ const TabContent: React.FC<TabContentProps> = ({ section, subsection }) => {
           />
         </div>
 
-        {/* Main Content Section */}
-        <div className="space-y-6">
-          {/* Search & Filters */}
-          <div className="bg-slate-900 rounded-lg p-6 border border-slate-700">
-            <div className="flex items-center space-x-4">
-              <div className="flex-1">
-                <input
-                  type="text"
-                  placeholder="Rechercher dans cette section..."
-                  className="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                <span className="mr-2">🔍</span>
-                Rechercher
-              </button>
-              <button className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                <span className="mr-2">⚙️</span>
-                Filtres
-              </button>
-            </div>
+        {/* Search Section */}
+        <div className="search-section">
+          <div className="search-row">
+            <input
+              type="text"
+              placeholder="Rechercher dans cette section..."
+              className="search-input"
+            />
+            <button className="btn btn-primary">
+              <span>🔍</span>
+              Rechercher
+            </button>
+            <button className="btn btn-secondary">
+              <span>⚙️</span>
+              Filtres
+            </button>
           </div>
+        </div>
 
-          {/* Data Table */}
-          <div className="bg-slate-900 rounded-lg border border-slate-700 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-slate-800 border-b border-slate-700">
-                  <tr>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      ID Dossier
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      Titre
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      Statut
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      Assigné à
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      Date
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-700">
-                  {[1, 2, 3, 4, 5].map((item) => (
-                    <tr
-                      key={item}
-                      className="hover:bg-slate-800 transition-colors cursor-pointer"
-                    >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-blue-400">
-                        #{String(item).padStart(6, '0')}
-                      </td>
-                      <td className="px-6 py-4 text-sm text-white">
-                        Exemple de dossier {subsection.title}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-900/30 text-green-400 border border-green-700">
-                          Actif
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-300">
-                        Agent Smith
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-400">
-                        {new Date().toLocaleDateString('fr-FR')}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm">
-                        <button className="text-blue-400 hover:text-blue-300 mr-3">
-                          Voir
-                        </button>
-                        <button className="text-slate-400 hover:text-slate-300">
-                          Éditer
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+        {/* Data Table */}
+        <div className="table-container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>ID Dossier</th>
+                <th>Titre</th>
+                <th>Statut</th>
+                <th>Assigné à</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[1, 2, 3, 4, 5].map((item) => (
+                <tr key={item}>
+                  <td className="table-id">#{String(item).padStart(6, '0')}</td>
+                  <td>Exemple de dossier {subsection.title}</td>
+                  <td>
+                    <span className="badge badge-success">Actif</span>
+                  </td>
+                  <td>Agent Smith</td>
+                  <td>{new Date().toLocaleDateString('fr-FR')}</td>
+                  <td>
+                    <div className="table-actions">
+                      <a href="#" className="table-link">Voir</a>
+                      <a href="#" className="table-link">Éditer</a>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-            {/* Pagination */}
-            <div className="bg-slate-800 px-6 py-4 flex items-center justify-between border-t border-slate-700">
-              <p className="text-sm text-slate-400">
-                Affichage 1-5 sur 248 résultats
-              </p>
-              <div className="flex space-x-2">
-                <button className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm transition-colors">
-                  Précédent
-                </button>
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">
-                  1
-                </button>
-                <button className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm transition-colors">
-                  2
-                </button>
-                <button className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm transition-colors">
-                  3
-                </button>
-                <button className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm transition-colors">
-                  Suivant
-                </button>
-              </div>
+          {/* Pagination */}
+          <div className="pagination">
+            <p className="pagination-info">Affichage 1-5 sur 248 résultats</p>
+            <div className="pagination-buttons">
+              <button className="pagination-btn">Précédent</button>
+              <button className="pagination-btn active">1</button>
+              <button className="pagination-btn">2</button>
+              <button className="pagination-btn">3</button>
+              <button className="pagination-btn">Suivant</button>
             </div>
           </div>
         </div>
@@ -178,21 +130,14 @@ interface StatCardProps {
 }
 
 const StatCard: React.FC<StatCardProps> = ({ title, value, change, icon, trend }) => {
-  const trendColor =
-    trend === 'up'
-      ? 'text-green-400'
-      : trend === 'down'
-      ? 'text-red-400'
-      : 'text-slate-400';
-
   return (
-    <div className="bg-slate-900 border border-slate-700 rounded-lg p-6 hover:border-blue-600 transition-all">
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-3xl">{icon}</span>
-        <span className={`text-sm font-semibold ${trendColor}`}>{change}</span>
+    <div className="stat-card">
+      <div className="stat-card-header">
+        <span className="stat-icon">{icon}</span>
+        <span className={`stat-change ${trend}`}>{change}</span>
       </div>
-      <h3 className="text-3xl font-bold text-white mb-1">{value}</h3>
-      <p className="text-sm text-slate-400">{title}</p>
+      <h3 className="stat-value">{value}</h3>
+      <p className="stat-label">{title}</p>
     </div>
   );
 };

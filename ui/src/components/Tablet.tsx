@@ -21,9 +21,9 @@ const Tablet: React.FC = () => {
   );
 
   return (
-    <div className="h-screen flex flex-col bg-slate-900">
+    <div className="app-container">
       <Header />
-      <div className="flex flex-1 overflow-hidden">
+      <div className="main-content">
         <Sidebar
           sections={sections}
           activeSection={activeSection}
