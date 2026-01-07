@@ -3,6 +3,7 @@ import type { Section, Subsection } from '../types';
 import { iconMap } from '../data/sections';
 import { IoStatsChart, IoTime, IoCheckmarkCircle, IoAlert, IoSearch, IoOptions } from 'react-icons/io5';
 import LawsPage from './pages/LawsPage';
+import WarrantsPage from './pages/WarrantsPage';
 
 interface TabContentProps {
   section: Section;
@@ -13,6 +14,11 @@ const TabContent: React.FC<TabContentProps> = ({ section, subsection }) => {
   // Render specific page components for certain subsections
   if (section.id === 'legislative' && subsection.id === 'codification') {
     return <LawsPage />;
+  }
+
+  // Render WarrantsPage for all legal instruments subsections
+  if (section.id === 'legal-instruments') {
+    return <WarrantsPage />;
   }
 
   // Default content for other subsections
