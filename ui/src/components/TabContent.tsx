@@ -2,6 +2,7 @@ import React from 'react';
 import type { Section, Subsection } from '../types';
 import { iconMap } from '../data/sections';
 import { IoStatsChart, IoTime, IoCheckmarkCircle, IoAlert, IoSearch, IoOptions } from 'react-icons/io5';
+import LawsPage from './pages/LawsPage';
 
 interface TabContentProps {
   section: Section;
@@ -9,6 +10,12 @@ interface TabContentProps {
 }
 
 const TabContent: React.FC<TabContentProps> = ({ section, subsection }) => {
+  // Render specific page components for certain subsections
+  if (section.id === 'legislative' && subsection.id === 'codification') {
+    return <LawsPage />;
+  }
+
+  // Default content for other subsections
   return (
     <div className="content">
       <div className="content-header">
