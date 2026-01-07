@@ -1,10 +1,24 @@
 import type { Section } from '../types';
+import {
+  IoShieldCheckmark,
+  IoHammer,
+  IoDocumentText,
+  IoFileTrayFull,
+  IoPeople,
+  IoEye,
+  IoDocuments,
+  IoIdCard,
+  IoKey,
+  IoCash,
+  IoMedical,
+  IoBusiness,
+} from 'react-icons/io5';
 
 export const sections: Section[] = [
   {
     id: 'governor',
     title: 'Gouverneur de l\'État',
-    icon: '🦅',
+    icon: 'IoShieldCheckmark',
     subsections: [
       { id: 'dashboard', title: 'Tableau de bord exécutif' },
       { id: 'executive-orders', title: 'Décrets exécutifs' },
@@ -19,7 +33,7 @@ export const sections: Section[] = [
   {
     id: 'doj',
     title: 'Département de la Justice',
-    icon: '⚖️',
+    icon: 'IoHammer',
     subsections: [
       { id: 'command-center', title: 'Centre de commandement DOJ' },
       { id: 'criminal-prosecutions', title: 'Poursuites pénales' },
@@ -34,7 +48,7 @@ export const sections: Section[] = [
   {
     id: 'judicial',
     title: 'Pouvoir judiciaire',
-    icon: '👨‍⚖️',
+    icon: 'IoDocumentText',
     subsections: [
       { id: 'court-management', title: 'Gestion des tribunaux' },
       { id: 'judges', title: 'Collège des juges' },
@@ -49,7 +63,7 @@ export const sections: Section[] = [
   {
     id: 'legal-instruments',
     title: 'Actes judiciaires',
-    icon: '📜',
+    icon: 'IoFileTrayFull',
     subsections: [
       { id: 'arrest-warrants', title: 'Mandats d\'arrêt' },
       { id: 'search-warrants', title: 'Mandats de perquisition' },
@@ -62,7 +76,7 @@ export const sections: Section[] = [
   {
     id: 'law-enforcement',
     title: 'Supervision des forces de l\'ordre',
-    icon: '👮',
+    icon: 'IoPeople',
     subsections: [
       { id: 'agencies', title: 'Police municipale / Sheriff / State Troopers' },
       { id: 'investigations', title: 'Enquêtes actives' },
@@ -76,7 +90,7 @@ export const sections: Section[] = [
   {
     id: 'intelligence',
     title: 'Renseignement & enquêtes',
-    icon: '🧠',
+    icon: 'IoEye',
     subsections: [
       { id: 'criminal-intel', title: 'Renseignement criminel' },
       { id: 'organized-crime', title: 'Crime organisé' },
@@ -90,7 +104,7 @@ export const sections: Section[] = [
   {
     id: 'legislative',
     title: 'Affaires législatives',
-    icon: '🏛️',
+    icon: 'IoDocuments',
     subsections: [
       { id: 'bill-drafting', title: 'Rédaction des lois' },
       { id: 'voting-status', title: 'Suivi des votes' },
@@ -102,7 +116,7 @@ export const sections: Section[] = [
   {
     id: 'citizens',
     title: 'Registres citoyens',
-    icon: '👥',
+    icon: 'IoIdCard',
     subsections: [
       { id: 'id-registry', title: 'Registre d\'identité de l\'État' },
       { id: 'criminal-history', title: 'Antécédents judiciaires (type NCIC)' },
@@ -115,7 +129,7 @@ export const sections: Section[] = [
   {
     id: 'licensing',
     title: 'Licences & régulation',
-    icon: '🔫',
+    icon: 'IoKey',
     subsections: [
       { id: 'firearms', title: 'Permis armes à feu' },
       { id: 'concealed-carry', title: 'Permis port dissimulé' },
@@ -127,7 +141,7 @@ export const sections: Section[] = [
   {
     id: 'treasury',
     title: 'Trésor & crimes financiers',
-    icon: '💰',
+    icon: 'IoCash',
     subsections: [
       { id: 'budget', title: 'Budget de l\'État' },
       { id: 'asset-forfeiture', title: 'Saisies & confiscations' },
@@ -140,7 +154,7 @@ export const sections: Section[] = [
   {
     id: 'health',
     title: 'Santé & sécurité publique',
-    icon: '🏥',
+    icon: 'IoMedical',
     subsections: [
       { id: 'medical-examiner', title: 'Rapports du médecin légiste' },
       { id: 'autopsies', title: 'Autopsies judiciaires' },
@@ -152,7 +166,7 @@ export const sections: Section[] = [
   {
     id: 'corporate',
     title: 'Affaires civiles & entreprises',
-    icon: '🏢',
+    icon: 'IoBusiness',
     subsections: [
       { id: 'registry', title: 'Registre des entreprises' },
       { id: 'civil-lawsuits', title: 'Procédures civiles' },
@@ -161,3 +175,19 @@ export const sections: Section[] = [
     ],
   },
 ];
+
+// Map des icônes
+export const iconMap: Record<string, any> = {
+  IoShieldCheckmark,
+  IoHammer,
+  IoDocumentText,
+  IoFileTrayFull,
+  IoPeople,
+  IoEye,
+  IoDocuments,
+  IoIdCard,
+  IoKey,
+  IoCash,
+  IoMedical,
+  IoBusiness,
+};

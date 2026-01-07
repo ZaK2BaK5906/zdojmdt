@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Section } from '../types';
+import { iconMap } from '../data/sections';
 
 interface SidebarProps {
   sections: Section[];
@@ -45,7 +46,9 @@ const Sidebar: React.FC<SidebarProps> = ({
               className={`section-btn ${activeSection === section.id ? 'active' : ''}`}
             >
               <div className="section-btn-left">
-                <span className="section-icon">{section.icon}</span>
+                <span className="section-icon">
+                  {React.createElement(iconMap[section.icon])}
+                </span>
                 <span>{section.title}</span>
               </div>
               <svg

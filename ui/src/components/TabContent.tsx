@@ -1,5 +1,7 @@
 import React from 'react';
 import type { Section, Subsection } from '../types';
+import { iconMap } from '../data/sections';
+import { IoStatsChart, IoTime, IoCheckmarkCircle, IoAlert, IoSearch, IoOptions } from 'react-icons/io5';
 
 interface TabContentProps {
   section: Section;
@@ -11,7 +13,9 @@ const TabContent: React.FC<TabContentProps> = ({ section, subsection }) => {
     <div className="content">
       <div className="content-header">
         <div className="content-header-top">
-          <span className="content-header-icon">{section.icon}</span>
+          <span className="content-header-icon">
+            {React.createElement(iconMap[section.icon])}
+          </span>
           <h2>{section.title}</h2>
         </div>
         <p>{subsection.title}</p>
@@ -24,28 +28,28 @@ const TabContent: React.FC<TabContentProps> = ({ section, subsection }) => {
             title="Dossiers actifs"
             value="248"
             change="+12%"
-            icon="📊"
+            icon={<IoStatsChart />}
             trend="up"
           />
           <StatCard
             title="En attente"
             value="67"
             change="-5%"
-            icon="⏳"
+            icon={<IoTime />}
             trend="down"
           />
           <StatCard
             title="Résolus aujourd'hui"
             value="32"
             change="+8%"
-            icon="✅"
+            icon={<IoCheckmarkCircle />}
             trend="up"
           />
           <StatCard
             title="Priorité haute"
             value="15"
             change="+3"
-            icon="🔴"
+            icon={<IoAlert />}
             trend="neutral"
           />
         </div>
@@ -59,11 +63,11 @@ const TabContent: React.FC<TabContentProps> = ({ section, subsection }) => {
               className="search-input"
             />
             <button className="btn btn-primary">
-              <span>🔍</span>
+              <IoSearch />
               Rechercher
             </button>
             <button className="btn btn-secondary">
-              <span>⚙️</span>
+              <IoOptions />
               Filtres
             </button>
           </div>
@@ -125,7 +129,7 @@ interface StatCardProps {
   title: string;
   value: string;
   change: string;
-  icon: string;
+  icon: React.ReactNode;
   trend: 'up' | 'down' | 'neutral';
 }
 

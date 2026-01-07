@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoHammer } from 'react-icons/io5';
 
 const Header: React.FC = () => {
   const currentDate = new Date().toLocaleDateString('fr-FR', {
@@ -17,7 +18,9 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="header-content">
         <div className="header-left">
-          <div className="header-logo">⚖️</div>
+          <div className="header-logo">
+            <IoHammer />
+          </div>
           <div className="header-title">
             <h1>State Department of Justice</h1>
             <p>Système Gouvernemental Intégré</p>
